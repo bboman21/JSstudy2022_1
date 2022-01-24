@@ -197,12 +197,69 @@ const quotes = [
 ];
 
 const quote = document.querySelector("#quote span:first-child");
-const author = document.querySelector("#quote span:last-child");
-const todayQuote = quotes[Math.floor(Math.random() * quotes.length)];
-
+const author = document.querySelector("#quote span:nth-child(2)");
+//const author = document.querySelector("#quote span:last-child");
+const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 console.log(quote);
+console.log(author);
+
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;
 
 
 
-quote.innerText = todayQuote.quote;
-author.innerText = todayQuote.author;
+//Background
+const images = ["background01.jpg", "background02.jpg", "background03.jpg",];
+const chosenImage = images[Math.floor(Math.random() * images.length)];
+const bgImage = document.createElement("img");
+
+bgImage.src = `img/${chosenImage}`;
+
+document.body.appendChild(bgImage);
+
+//TO DO list
+
+const toDoForm = document.getElementById("todo-form");
+const toDoInput = document.querySelector("#todo-form input");
+const toDoList = document.getElementById("todo-list");
+
+function deleteToDo(event) {
+  //console.log("aaaaa");
+  const li = event.target.parentElement;
+  li.remove();
+}
+
+
+function printToDo(newToDo){
+  //console.log("my todo is ", event);
+  const li = document.createElement("li");
+  const span = document.createElement("span");
+  span.innerText = newToDo;
+  const button = document.createElement("button");
+  button.innerText = "❌";
+  button.addEventListener("click", deleteToDo)
+  li.appendChild(span);
+  li.appendChild(button);
+  toDoList.appendChild(li);
+  //console.log(li);
+}
+
+
+function handleToDoSubmit(event){
+  event.preventDefault();
+  //console.log(toDoInput.value);
+  const newToDo = toDoInput.value;
+  toDoInput.value = "";
+  //console.log(newToDo);
+  printToDo(newToDo);
+}
+
+
+toDoForm.addEventListener("submit", handleToDoSubmit);
+
+
+<form id="todo-form">
+        <input type="text" placeholder="Write a To DO and Press Enter" required />
+      </form>
+      <ul id="todo-list">
+      </ul>

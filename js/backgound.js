@@ -1,12 +1,7 @@
-const images = ["background01.jpg","background02.jpg","background03.jpg"];
-todayImage = images[Math.floor(Math.random() * images.length)];
-
-console.log(todayImage);
-
+const images = ["background01.jpg", "background02.jpg", "background03.jpg",];
+const chosenImage = images[Math.floor(Math.random() * images.length)];
 const bgImage = document.createElement("img");
 
-bgImage.src = `img/${todayImage}`;
-
-console.log(bgImage.src);
+bgImage.src = `img/${chosenImage}`;
 
 document.body.appendChild(bgImage);

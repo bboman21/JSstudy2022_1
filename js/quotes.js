@@ -1,60 +1,40 @@
 const quotes = [
     {
-        quote: "01 ahsdfnlkjsdlfsja asdfasdfasdfasdf sdf asdfasd",
-        author: "ajsdflds",
+        quote: "01 dasdgfajfadsg jalskdjf",
+        author: "bvn kljf sadf",
     },
     {
-        quote: "02 aagalkjsdlfsja asdfasdfasdfasdf sdf asdfasd",
-        author: "ajsdflds",
+        quote: "02 adf ajflasjgfsdf sdlkfjalskdjf",
+        author: "utr jf sadf",
     },
     {
-        quote: "03 jghg ae avsew asdf sdf asdfasd",
-        author: "msgfbvd",
+        quote: "03 m.,fggskj jflasjdfljasd lkfjalskdjf",
+        author: "asdkljf sadf",
     },
     {
-        quote: "04 gbsdf gbvccasdffasdf asdfasf fasd",
-        author: "vdscvsd d",
+        quote: "04 pyiouc rytlasjd flja sdlkfjalskdjf",
+        author: "wthljf sadf",
     },
     {
-        quote: "05 etg nb gfsf sfsdffasdsafassafa asfdsf  asf ",
-        author: "xvcasdv flds",
+        quote: "05 bvm sdajflasjd fljasdlkfjalskdjf",
+        author: "a.nmkljf sadf",
     },
     {
-        quote: "06 nstrh afs gfhsdfasdf swfsczxsf dcafdf",
-        author: "reg flds",
+        quote: "06 ;869tukflsda jflasjdf ljasdlkfjalskdjf",
+        author: "fsg.ljf sadf",
     },
     {
-        quote: "07 lkjhngfb43 wfaht retasdfasvzx dafawe f",
-        author: "wefxcb lds",
+        quote: "07 dfsghs daj flasjdflja sdlkfjalskdjf",
+        author: "bcvnkljf sadf",
     },
-    {
-        quote: "08 aver dlfsja asdxdfsefasabfzvzsvcswecewc",
-        author: "sdaf lds",
-    },
-    {
-        quote: "09 eyjiuio lfsja asdf asdsa fssfSFcv fasd",
-        author: "jhsfdc ds",
-    },
-    {
-        quote: "10 fkhg g dsvdfa asdfasdfasdfascvbzres eawf aw",
-        author: "xcvr lds",
-    },
-];
-
-
-
-
-
+]
 
 const quote = document.querySelector("#quote span:first-child");
-const author = document.querySelector("#quote span:last-child");
-const todayQuote = quotes[Math.floor(Math.random() * quotes.length)];
+const author = document.querySelector("#quote span:nth-child(2)");
+//const author = document.querySelector("#quote span:last-child");
+const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
+//console.log(quote);
+//console.log(author);
 
-
-quote.innerText = todayQuote.quote;
-author.innerText = todayQuote.author;
-
-
-
-
-
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;
