@@ -2,7 +2,7 @@ const todoForm = document.getElementById("todo-form");
 const todoInput = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 
-const todos= [];
+let todos = [];
 const TODOS_KEY = "Todos";
 
 function saveTodos(){
@@ -13,16 +13,20 @@ function saveTodos(){
 function deleteTodo(event){
   //console.log("aaaa");
   const li = event.target.parentElement;
+  //console.log(li.id);
   li.remove();
+  todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+  saveTodos();
 }
 
 
-function printTodo(todoText){
+function paintTodo(newTodo){
   const li = document.createElement("li");
+  li.id = newTodo.id;
   const span = document.createElement("span");
   const button = document.createElement("button");
 
-  span.innerText = todoText;
+  span.innerText = newTodo.text;
   button.innerText = "❌";
   button.addEventListener("click", deleteTodo);
   li.appendChild(span);
@@ -36,10 +40,14 @@ function printTodo(todoText){
 function getTodoList(event){
   event.preventDefault();
   //console.log(todoInput.value);
-  const todoText = todoInput.value;
+  const newTodo = todoInput.value;
   todoInput.value = "";
-  todos.push(todoText);
-  printTodo(todoText);
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  todos.push(newTodoObj);
+  paintTodo(newTodoObj);
   saveTodos()
 
 }
@@ -56,6 +64,8 @@ const savedTodos = localStorage.getItem(TODOS_KEY);
 if(savedTodos !== null){
   const parsedTodos = JSON.parse(savedTodos);
   console.log(parsedTodos);
-  parsedTodos.forEach((item) => console.log("this is the turn Of", item));
+  todos = parsedTodos;
+  parsedTodos.forEach(paintTodo);
+  
 
 }
